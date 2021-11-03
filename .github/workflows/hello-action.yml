@@ -38,6 +38,6 @@ jobs:
       - name: dump output
         shell: pwsh
         run: |
-          ./SAMPLE-action.ps1
+          #./SAMPLE-action.ps1
           Write-ActionInfo  'Hello World! '
           Write-ActionInfo  'Have a good day!'
