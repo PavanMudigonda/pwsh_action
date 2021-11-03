@@ -30,7 +30,6 @@ jobs:
         id: helloworld
         uses: ./
         with:
-          name: 'Pavan Mudigonda'
           firstInput: 'Pavan'
           secondInput: 'Mudigonda'
 
