@@ -1,0 +1,42 @@
+
+name: test-action
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_check_run: 
+        description: |
+          false
+        required: false
+  #push:
+  #release:
+  #  types: published
+
+jobs:
+
+  run-hello-world:
+    strategy:
+      matrix:
+        os:
+          - 'ubuntu-latest'
+    runs-on: ${{ matrix.os }}
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v1
+      
+      - name: hello world
+        if: ${{ !cancelled() }}  
+        id: helloworld
+        uses: ./
+        with:
+          firstInput: 'Pavan'
+          secondInput: 'Mudigonda'
+
+      
+      - name: dump output
+        shell: pwsh
+        run: |
+          ./SAMPLE-action.ps1
+          Write-ActionInfo  'Hello World! '
+          Write-ActionInfo  'Have a good day!'
