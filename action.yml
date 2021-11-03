@@ -1,37 +1,67 @@
-
-## This is a SAMPLE metadata file for a GitHub Action.  For more info:
-##    https://help.github.com/en/articles/metadata-syntax-for-github-actions
-
-name: action-name
-author: your-name
-description: What does the action do.
+name: code-coverage-reporter
+author: Pavan Mudigonda
+description: |
+  Parses Jacoco, corbetura, icov istanbul Code Coverage reports and published on Github Actions 
 
 ## Here you describe your *formal* inputs -- those that are
 ## documented and can be displayed by the marketplace.
 ## You also use these to identify the *required* inputs.
 inputs:
 
-  firstInput:
-    description: what is this input for?
-    required: false
+  code_coverage_path:
+    description: |
+      Path to the Code coverage file
+    required: true
+    
 
-  secondInput:
-    description: what is this input for?
-    required: false
-    default: input default value
+  report_name:
+    description: |
+      The name of the report object that will be attached to the
+      Workflow Run.  Defaults to the name `CODE_COVERAGE_<datetime>`
+      where `<datetime>` is in the form `yyyyMMdd_hhmmss`.
+    required: true
+
+  report_title:
+    description: |
+      The title of the report that will be embedded in the report
+      itself, which defaults to the same as the `report_name` input.
+    required: true
+  
+  github_token:
+    description: |
+      GITHUB_TOKEN to authenticate against API calls to attach
+      report to Workflow Run.
+    required: true
+
+  skip_check_run:
+    description: |
+      If true, will skip attaching the Tests Result report to
+      the Workflow Run using a Check Run.  Useful if you just
+      want to produce a Gist-based report via the `gist_name`
+      and `gist_token` input parameters.
+    required: true
 
 ## Here you describe your *formal* outputs.
 outputs:
 
-  first_output:
-    description: what does this output provide?
+  coverage_value:
+    description: |
+      A single string indicating the final result such as
+      `Failed` or `Completed`.
 
-  second_output:
-    description: what does this output provide?
+  total_lines:
+    description: Total number of lines.
+
+  covered_lines:
+    description: Total number of covered lines.
+
+  notcovered_lines:
+    description: Total number of lines not covered.
+
 
 branding:
   color: purple
-  icon: terminal
+  icon: check-circle
 
 ## Even though the Action logic may be implemented
 ## in PWSH, we still need a NodeJS entry point
