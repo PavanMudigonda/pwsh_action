@@ -30,6 +30,7 @@ jobs:
         id: helloworld
         uses: ./
         with:
+          salutation: "Mr"
           firstInput: 'Pavan'
           secondInput: 'Mudigonda'
 
