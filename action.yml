@@ -1,67 +1,37 @@
-name: code-coverage-reporter
+
+## This is a SAMPLE metadata file for a GitHub Action.  For more info:
+##    https://help.github.com/en/articles/metadata-syntax-for-github-actions
+
+name: Power Shell Hello World!
 author: Pavan Mudigonda
-description: |
-  Parses Jacoco, corbetura, icov istanbul Code Coverage reports and published on Github Actions 
+description: Hello World!
 
 ## Here you describe your *formal* inputs -- those that are
 ## documented and can be displayed by the marketplace.
 ## You also use these to identify the *required* inputs.
 inputs:
 
-  code_coverage_path:
-    description: |
-      Path to the Code coverage file
-    required: true
-    
+  firstInput:
+    description: First Name
+    required: false
 
-  report_name:
-    description: |
-      The name of the report object that will be attached to the
-      Workflow Run.  Defaults to the name `CODE_COVERAGE_<datetime>`
-      where `<datetime>` is in the form `yyyyMMdd_hhmmss`.
-    required: true
-
-  report_title:
-    description: |
-      The title of the report that will be embedded in the report
-      itself, which defaults to the same as the `report_name` input.
-    required: true
-  
-  github_token:
-    description: |
-      GITHUB_TOKEN to authenticate against API calls to attach
-      report to Workflow Run.
-    required: true
-
-  skip_check_run:
-    description: |
-      If true, will skip attaching the Tests Result report to
-      the Workflow Run using a Check Run.  Useful if you just
-      want to produce a Gist-based report via the `gist_name`
-      and `gist_token` input parameters.
-    required: true
+  secondInput:
+    description: Last Name
+    required: false
+    default: 
 
 ## Here you describe your *formal* outputs.
 outputs:
 
-  coverage_value:
-    description: |
-      A single string indicating the final result such as
-      `Failed` or `Completed`.
+  first_output:
+    description: Full Name
 
-  total_lines:
-    description: Total number of lines.
-
-  covered_lines:
-    description: Total number of covered lines.
-
-  notcovered_lines:
-    description: Total number of lines not covered.
-
+  second_output:
+    description: Greeting
 
 branding:
   color: purple
-  icon: check-circle
+  icon: terminal
 
 ## Even though the Action logic may be implemented
 ## in PWSH, we still need a NodeJS entry point
