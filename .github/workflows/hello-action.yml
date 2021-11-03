@@ -1,5 +1,5 @@
 
-name: test-action
+name: hello-action
 
 on:
   workflow_dispatch:
@@ -25,11 +25,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v1
       
-      - name: hello world
+      - name: helloworld
         if: ${{ !cancelled() }}  
         id: helloworld
         uses: ./
         with:
+          name: 'Pavan Mudigonda'
           firstInput: 'Pavan'
           secondInput: 'Mudigonda'
 
